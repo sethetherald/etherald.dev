@@ -1,4 +1,4 @@
-#etherald.dev
+# etherald.dev
 
 Portfolio and blog, powered by [Astro][1].
 
