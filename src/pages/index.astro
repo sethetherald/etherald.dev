@@ -1,0 +1,45 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header title={SITE_TITLE} />
+    <main>
+
+      <h2>Hello and welcome!</h2>
+      <p>
+        I'm Tùng <small>(you can call me Seth if you can't pronouce that btw)</small>.
+      </p>
+
+      </p>
+        I'm specialized in Back-end developing, though I don't have any real-world experience yet.
+        I have a tiny bit of experience with front-end stuff, not much to have any valuable opinion on it though.
+        <br>
+        <i>(As to why I'm not a full stack developer, I'll probably explain that in a future blog post. Soon<sup>TM</sup>)</i>
+      </p>
+
+      <h2>Contact</h2>
+      <p>
+        Email me at <a href="mailto:sethetherald@duck.com">sethetherald@duck.com</a>.
+      </p>
+
+      <h2>Why does this website look so basic?</h2>
+      <p>
+        I shamelessly stole the design from <a href="https://hxann.com/">an old version of my friend's website</a>.
+      </p>
+
+      <h2>Why doesn't this website have Light Theme?</h2>
+      <p>What are you, a psychopath?</p>
+
+    </main>
+    <Footer />
+  </body>
+</html>

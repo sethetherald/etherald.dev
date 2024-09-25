@@ -1,0 +1,44 @@
+html {
+  font-family: 'IBM Plex Mono', 'Menlo', 'DejaVu Sans Mono',
+    'Bitstream Vera Sans Mono', Courier, monospace;
+  font-size: 21px;
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: #2D353B;
+  color: #D3C6AA;
+}
+
+@media (max-width: 1000px) {
+  html {
+    font-size: unset;
+  }
+}
+
+a,
+a:visited,
+a:hover,
+a:active {
+  color: #A7C080;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* from Tailwind */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+blockquote {
+  border-left: 4px solid gray;
+  padding-left: 0.5em;
+}

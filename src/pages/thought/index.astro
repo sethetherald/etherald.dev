@@ -1,0 +1,64 @@
+---
+import { getCollection } from "astro:content";
+import BaseHead from "../../components/BaseHead.astro";
+import Footer from "../../components/Footer.astro";
+import FormattedDate from "../../components/FormattedDate.astro";
+import Header from "../../components/Header.astro";
+import NotFound from "../../components/NotFound.astro";
+import { SITE_TITLE } from "../../consts";
+
+const thoughts = await Promise.all(
+  (await getCollection("thought"))
+    .sort(
+      (a: any, b: any) =>
+        b.data.publication_date.valueOf() - a.data.publication_date.valueOf(),
+    )
+    .map(async (thought: any) => {
+      return {
+        ...thought,
+        rendered: await thought.render(),
+      };
+    }),
+);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead
+      title={"Thoughts | " + SITE_TITLE}
+      description="Here houses all of my thoughts and small opinions."
+    />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <h1>Thoughts</h1>
+      <p>Here houses all of my thoughts and small opinions.</p>
+      
+      <section>
+          {thoughts.length === 0 ? (
+              <NotFound />
+            ) : (
+                thoughts.map((thought: any) => {
+                    const { Content } = thought.rendered;
+                    
+                    return (
+                        <div>
+                <h2 id={thought.slug}>
+                  <a href={`#${thought.slug}`}>#</a> {thought.data.title}
+                </h2>
+                <div>
+                  <FormattedDate date={thought.data.publication_date} />
+                </div>
+                <Content />
+              </div>
+            );
+          })
+          )
+        }
+      </section>
+    </main>
+    <Footer />
+  </body></html
+>

@@ -1,0 +1,22 @@
+{
+  "name": "blog",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.3",
+    "@astrojs/mdx": "^3.1.7",
+    "@astrojs/rss": "^4.0.7",
+    "@astrojs/sitemap": "^3.1.6",
+    "@unpic/astro": "^0.0.47",
+    "astro": "^4.15.9",
+    "astro-google-fonts-optimizer": "^0.2.2",
+    "typescript": "^5.6.2"
+  }
+}
