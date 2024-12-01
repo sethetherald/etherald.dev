@@ -1,21 +1,15 @@
 ---
-// Import the global.css file here so that it is included on
-// all pages through the use of the <BaseHead /> component.
 import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer";
 import { ViewTransitions } from 'astro:transitions';
 import "../styles/global.css";
-
 interface Props {
   title: string;
   description: string;
   image?: string;
 }
-
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-
 const { title, description, image = "/images/banner.png" } = Astro.props;
 ---
-
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -23,29 +17,65 @@ const { title, description, image = "/images/banner.png" } = Astro.props;
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <GoogleFontsOptimizer url={"https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"}></GoogleFontsOptimizer>
-
+<link rel="preload" href="../styles/global.css" as="style" />
+<style>
+  /* Critical inline styles */
+  html {
+    font-family: 'IBM Plex Mono', 'Menlo', 'DejaVu Sans Mono',
+      'Bitstream Vera Sans Mono', Courier, monospace;
+    font-size: 21px;
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #2D353B;
+    color: #D3C6AA;
+  }
+  @media (max-width: 1000px) {
+    html {
+      font-size: unset;
+    }
+  }
+  a,
+  a:visited,
+  a:hover,
+  a:active {
+    color: #A7C080;
+  }
+  img {
+    max-width: 100%;
+  }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+  blockquote {
+    border-left: 4px solid gray;
+    padding-left: 0.5em;
+  }
+</style>
 <meta name="generator" content={Astro.generator} />
-
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
-
 <!-- Primary Meta Tags -->
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
-
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
 <meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={new URL(image, Astro.url)} />
-
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={Astro.url} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
-
 <ViewTransitions/>
